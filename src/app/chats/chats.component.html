@@ -1,0 +1,5 @@
+<h2>Chatroom: {{ id }}</h2>
+<form (ngSubmit)="onSubmit(message, id); message = ''">
+  <input type="text" name="message" [(ngModel)]="message" placeholder="type in a message..."/>
+</form>
+<button (click)="goBack()">go Back</button>

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 
-let room = 'chat1';
-
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
@@ -19,7 +17,7 @@ export class RoomsComponent implements OnInit {
   }
 
   joinRoom(room) {
-    this.socket.emit('room', room);
+    this.socket.emit('join room', room);
   }
 
 }

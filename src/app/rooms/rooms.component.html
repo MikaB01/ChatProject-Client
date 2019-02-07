@@ -1,4 +1,6 @@
 <h2>Chose a room</h2>
-<button (click)="joinRoom('chat1');">Room 1</button>
-<button (click)="joinRoom('chat2');">Room 2</button>
-<button (click)="joinRoom('chat3');">Room 3</button>
+<nav>
+  <a (click)="joinRoom('room1');" routerLink="/room/1">Room 1</a>
+  <a (click)="joinRoom('room2');" routerLink="/room/2">Room 2</a>
+  <a (click)="joinRoom('room3');" routerLink="/room/3">Room 3</a>
+</nav>
