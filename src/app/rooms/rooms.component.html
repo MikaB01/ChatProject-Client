@@ -1,6 +1,41 @@
 <h2>Chose a room</h2>
-<nav>
-  <a (click)="joinRoom('room1');" routerLink="/room/1">Room 1</a>
-  <a (click)="joinRoom('room2');" routerLink="/room/2">Room 2</a>
-  <a (click)="joinRoom('room3');" routerLink="/room/3">Room 3</a>
-</nav>
+
+<table mat-table [dataSource]="rooms" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id. </th>
+    <td mat-cell *matCellDef="let room" (click)="joinRoom(room.id);" routerLink="/room/{{room.id}}"> {{room.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let room" (click)="joinRoom(room.id);" routerLink="/room/{{room.id}}">{{room.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center"> Delete </th>
+        <td mat-cell *matCellDef="let room">
+          <div style="text-align: center">
+              <swal
+              #deleteSwal
+              title="Really want to delete room: <br /> {{ room.name }} [Id: {{ room.id }}]?"
+              text="This cannot be undone"
+              type="question"
+              [showCancelButton]="true"
+              [focusCancel]="true"
+              (confirm)="deleteRoom(room.id)">
+            </swal>
+            <button class="delete" [swal]="deleteSwal">x</button>
+          </div>
+        </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="roomRow"></tr>
+</table>
+
+<h4>Create a new Room:</h4>
+<form (ngSubmit)="createRoom(roomName); roomName = ''">
+  <input type="text" name="roomName" [(ngModel)]="roomName" autocomplete="off" placeholder="Enter a room name..."/>
+  <button (click)="ngSubmit">add</button>
+</form>

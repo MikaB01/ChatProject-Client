@@ -1,5 +1,8 @@
-<h2>Chatroom: {{ id }}</h2>
+<h2>Chatroom: {{roomName}} [Id:{{ id }}]</h2>
+<button (click)="goBack()" id="goBack"> -> Go back <- </button>
+<ul>
+  <li *ngFor="let message of messages">{{message}}</li>
+</ul>  
 <form (ngSubmit)="onSubmit(message, id); message = ''">
-  <input type="text" name="message" [(ngModel)]="message" placeholder="type in a message..."/>
+  <input type="text" name="message" [(ngModel)]="message" autocomplete="off" placeholder="type in a message..."/><button>Send</button>
 </form>
-<button (click)="goBack()">go Back</button>
