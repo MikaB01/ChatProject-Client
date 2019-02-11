@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 
 import { Room } from '../room';
 import { RoomService } from '../room.service';
-import { SwalComponent } from '@toverux/ngx-sweetalert2';
+import * as swal from 'sweetalert2';
 
 @Component({
   selector: 'app-rooms',
@@ -13,7 +13,6 @@ import { SwalComponent } from '@toverux/ngx-sweetalert2';
 export class RoomsComponent implements OnInit{
   public displayedColumns: string[] = ['id', 'name', 'delete'];
   rooms: Room[];
-  @ViewChild('deleteSwal') private deleteSwal: SwalComponent;
 
   constructor( private socket: Socket, private roomService: RoomService) {}
 
@@ -25,8 +24,26 @@ export class RoomsComponent implements OnInit{
     this.socket.emit('join room', room);
   }
 
+  async createRoomCheck(room) {
+    if(!room){
+      const {value: newRoom} = await swal.default({
+        title: 'Add new room: <br />Please type in a roomname!',
+        input: 'text',
+        inputPlaceholder: 'Roomname...',
+        inputAttributes: {
+          maxlength: '20',
+          autocapitalize: 'off',
+          autocorrect: 'off'
+        },
+        type: 'info',
+        showCancelButton: true,
+      });
+      if(newRoom){this.createRoom(newRoom);}
+      console.log(newRoom);
+    } else this.createRoom(room);
+  }
+
   createRoom(room) {
-    if(!room) return alert("insert name");
     let sub = this.roomService.addRoom({name: room})
       .subscribe(async () => {
         await this.getAllRooms();

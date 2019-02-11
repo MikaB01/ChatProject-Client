@@ -35,7 +35,7 @@
 </table>
 
 <h4>Create a new Room:</h4>
-<form (ngSubmit)="createRoom(roomName); roomName = ''">
-  <input type="text" name="roomName" [(ngModel)]="roomName" autocomplete="off" placeholder="Enter a room name..."/>
-  <button (click)="ngSubmit">add</button>
+<form (ngSubmit)="createRoomCheck(roomName); roomName = ''">
+  <input type="text" maxlength="20" name="roomName" [(ngModel)]="roomName" autocomplete="off" placeholder="Enter a room name..."/>
+  <button (click)="ngSubmit" id="addButton">add</button>
 </form>
