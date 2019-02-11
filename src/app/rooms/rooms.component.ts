@@ -39,7 +39,6 @@ export class RoomsComponent implements OnInit{
         showCancelButton: true,
       });
       if(newRoom){this.createRoom(newRoom);}
-      console.log(newRoom);
     } else this.createRoom(room);
   }
 
@@ -47,7 +46,6 @@ export class RoomsComponent implements OnInit{
     let sub = this.roomService.addRoom({name: room})
       .subscribe(async () => {
         await this.getAllRooms();
-        console.log(this.rooms);
         sub.unsubscribe() });
   }
 

@@ -33,3 +33,15 @@ button#addButton:hover {
     font-weight: bold;
     background-color: rgb(250, 255, 242);
 }
+
+#layout {
+    display: grid;
+}
+
+#choosRoom {
+    grid-area: 1 / 1 / 2 / 2
+}
+
+#createRoom {
+    grid-area: 1 / 2 / 2 / 8
+}

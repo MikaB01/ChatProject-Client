@@ -1,4 +1,6 @@
-<h2>Chose a room</h2>
+<div id="layout">
+<div id="choosRoom">
+<h2>Choose a room</h2>
 
 <table mat-table [dataSource]="rooms" class="mat-elevation-z8">
 
@@ -33,9 +35,13 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="roomRow"></tr>
 </table>
+</div>
 
-<h4>Create a new Room:</h4>
+<div id="createRoom">
+<h2>Create a new Room:</h2>
 <form (ngSubmit)="createRoomCheck(roomName); roomName = ''">
   <input type="text" maxlength="20" name="roomName" [(ngModel)]="roomName" autocomplete="off" placeholder="Enter a room name..."/>
   <button (click)="ngSubmit" id="addButton">add</button>
 </form>
+</div>
+</div>
