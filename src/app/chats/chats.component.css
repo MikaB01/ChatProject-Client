@@ -38,15 +38,21 @@ ul li:nth-child(odd) {
 }
 
 #goBack {
-    position: absolute;
-    background: rgb(182, 182, 182); 
-    border: none; 
-    padding: 8px; 
-    border-radius: 15px;
-    margin-top: -30px;
-    left: 460px;
+    margin-left: 20px;
+    width: 22px !important;
+    height: 22px !important;
+    line-height: 22px !important;
+    color: rgb(175, 175, 175);
+}
+
+#goBack:hover {
+    color: rgb(90, 90, 90);
 }
 
 #goBack:hover {
     font-weight: bold;
+}
+
+.flex-container {
+    display: flex;
 }

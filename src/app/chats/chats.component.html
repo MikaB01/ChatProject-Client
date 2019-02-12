@@ -1,5 +1,10 @@
-<h2>Chatroom: {{roomName}} [Id:{{ id }}]</h2>
-<button (click)="goBack()" id="goBack"> -> Go back <- </button>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="flex-container">
+  <h2>Chatroom: {{roomName}} [Id:{{ id }}]</h2>
+  <button mat-icon-button (click)="goBack()" id="goBack" matTooltipPosition="right" matTooltip="Go back!" [matTooltipShowDelay]="500">
+    <mat-icon style="font-size: 36px">subdirectory_arrow_left</mat-icon>
+  </button>
+</div>
 <ul>
   <li *ngFor="let message of messages">{{message}}</li>
 </ul>  
